@@ -32,6 +32,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*Add vertical margin for add button in main page content header*/
-#add-student-button {
+#add-student-button, #add-group-button {
 	margin-top: 15px;
 }
