@@ -8,7 +8,7 @@
 		<!-- Include Styles -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/main.css">
-		<style type="text/css">.col-xs-12, .col-xs-4, .col-xs-8 {border:1px solid red;}</style>
+		<style type="text/css">.col-xs-12, .col-xs-4, .col-xs-8, .col-xs-3, .col-xs-9 {border:1px solid red;}</style>
 
 	</head>
 	<body>
@@ -53,14 +53,19 @@
 			<div class="row" id="content-columns">
 			
 				<div class="col-xs-12" id="content-column">
-					
+
 					<!-- Status Message -->
 					<div class="alert alert-warning" role="alert">Зміни скасовано.</div>
-					
-					<h2>База Студентів</h2>
-					
-					<!-- Add Student Button -->
-					<a class="btn btn-primary" href="#">Додати Студента</a>
+
+                    <div class="row">
+                        <div class="col-xs-4" id="content-header">
+                            <h2>База студентів</h2>
+                        </div>
+                        <div class="col-xs-8" id="add-student-button">
+                            <!-- Add Student Button -->
+                            <a class="btn btn-primary" href="#">Додати Студента</a>
+                        </div>
+                    </div>
 
 					<!-- Start Students Listing -->
 					<table class="table table-hover table-striped">
