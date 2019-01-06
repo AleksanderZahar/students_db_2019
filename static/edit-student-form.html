@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Сервіс Обліку Студентів</title>
+    <meta name="description" content="Система Обліку Студентів Навчального Закладу"/>
+
+    <!-- Include Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <style type="text/css">.col-xs-12, .col-xs-4, .col-xs-8, .col-sm-2, .col-sm-4 {
+        border: 1px solid red;
+    }</style>
+
+</head>
+<body>
+<!-- Start Container -->
+<div class="container">
+
+    <!-- Start Header -->
+    <div class="row" id="header">
+
+        <!-- Logo -->
+        <div class="col-xs-12">
+            <h1 style="padding-left: 10px">Форма редагування Студента</h1>
+        </div>
+    </div>
+    <!-- End Header -->
+
+    <!--Start Edit Student Form-->
+    <div class="row" id="edit-student-form">
+        <div class="col-xs-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Ім'я*</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputName" placeholder="Введіть Ваше ім'я" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputSurname" class="col-sm-2 control-label">Призвище*</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputSurname" placeholder="Введіть Ваше Призвище"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputSecondName" class="col-sm-2 control-label">По-батькові</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputSecondName" placeholder="Введіть По-батькові"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputStudentTicket" class="col-sm-2 control-label">№ Студ. квитка*</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputStudentTicket"
+                               placeholder="Введіть Ваш номер студентського квитка" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputBDay" class="col-sm-2 control-label">Дата народження*</label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" id="inputBDay" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhoto" class="col-sm-2 control-label">Фото</label>
+                    <div class="col-sm-4">
+                        <input type="file" accept="image/*" id="inputPhoto">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputGroupList" class="col-sm-2 control-label">Група*</label>
+                    <div class="col-sm-4">
+                        <input list="groupList" class="form-control" id="inputGroupList"
+                               placeholder="Введіть свою групу" required>
+                        <datalist id="groupList">
+                            <option value="МтМ-21">
+                            <option value="МтМ-22">
+                            <option value="МтМ-23">
+                            <option value="МтМ-24">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputComments" class="col-sm-2 control-label">Додаткові нотатки</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" id="inputComments" placeholder="Додаткові відомості"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                        <button type="reset" class="btn btn-danger">Скасувати</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--End Edit Student Form-->
+</div>
+<!-- End Container -->
+</body>
+</html>
+
+
+
+
+
+
+
