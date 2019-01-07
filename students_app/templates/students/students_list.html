@@ -42,9 +42,9 @@
     <div class="row" id="sub-header">
         <div class="col-xs-12">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="/">Студенти</a></li>
+                <li role="presentation" class="active"><a href= "{% url 'home' %}">Студенти</a></li>
                 <li role="presentation"><a href="/journal">Відвідування</a></li>
-                <li role="presentation"><a href="/groups">Групи</a></li>
+                <li role="presentation"><a href= "{% url 'groups' %}">Групи</a></li>
             </ul>
         </div>
     </div>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-xs-8" id="add-student-button">
                     <!-- Add Student Button -->
-                    <a class="btn btn-primary" href="/students/add">Додати Студента</a>
+                    <a class="btn btn-primary" href="{% url 'students_add' %}">Додати Студента</a>
                 </div>
             </div>
 
@@ -85,8 +85,8 @@
                     <td><img height="30" width="30"
                              src="./img/me.jpeg"
                              class="img-circle"></td>
-                    <td><a title="Редагувати" href="students/1/edit">Корост</a></td>
-                    <td><a title="Редагувати" href="students/1/edit">Андрій</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_edit' 1 %}">Корост</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_edit' 1 %}">Андрій</a></td>
                     <td>2123</td>
                     <td>
                         <div class="dropdown">
@@ -101,11 +101,11 @@
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/1/edit">Редагувати</a>
+                                       href="{% url 'students_edit' 1 %}">Редагувати</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/1/delete">Видалити</a>
+                                       href="{% url 'students_delete' 1 %}">Видалити</a>
                                 </li>
                             </ul>
                         </div>
@@ -116,8 +116,8 @@
                     <td><img height="30" width="30"
                              src="./img/piv.png"
                              class="img-circle"></td>
-                    <td><a title="Редагувати" href="students/2/edit">Подоба</a></td>
-                    <td><a title="Редагувати" href="students/2/edit">Віталій</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_edit' 2 %}">Подоба</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_edit' 2 %}">Віталій</a></td>
                     <td>254</td>
                     <td>
                         <div class="dropdown">
@@ -128,15 +128,15 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/journal/2">Відвідування</a>
+                                       href="/journal/1">Відвідування</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/2/edit">Редагувати</a>
+                                       href="{% url 'students_edit' 2 %}">Редагувати</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/2/delete">Видалити</a>
+                                       href="{% url 'students_delete' 2 %}">Видалити</a>
                                 </li>
                             </ul>
                         </div>
@@ -147,8 +147,8 @@
                     <td><img height="30" width="30"
                              src="./img/podoba3.jpg"
                              class="img-circle"></td>
-                    <td><a title="Редагувати" href="students/3/edit">Притула</a></td>
-                    <td><a title="Редагувати" href="students/3/edit">Тарас</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_delete' 3 %}">Притула</a></td>
+                    <td><a title="Редагувати" href="{% url 'students_delete' 3 %}">Тарас</a></td>
                     <td>5332</td>
                     <td>
                         <div class="dropdown">
@@ -159,15 +159,15 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/journal/3">Відвідування</a>
+                                       href="/journal/1">Відвідування</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/3/edit">Редагувати</a>
+                                       href="{% url 'students_edit' 3 %}">Редагувати</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1"
-                                       href="/students/3/delete">Видалити</a>
+                                       href="{% url 'students_delete' 3 %}">Видалити</a>
                                 </li>
                             </ul>
                         </div>
