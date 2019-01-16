@@ -3,18 +3,18 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
                        # Students urls:
-                       url(r'^$', 'students_app.views.students_list', name='home'),
-                       url(r'^students/add/$', 'students_app.views.students_add', name='students_add'),
-                       url(r'^students/(?P<sid>\d+)/edit/$', 'students_app.views.students_edit', name='students_edit'),
-                       url(r'^students/(?P<sid>\d+)/delete/$', 'students_app.views.students_delete',
+                       url(r'^$', 'students_app.views.students.students_list', name='home'),
+                       url(r'^students/add/$', 'students_app.views.students.students_add', name='students_add'),
+                       url(r'^students/(?P<sid>\d+)/edit/$', 'students_app.views.students.students_edit', name='students_edit'),
+                       url(r'^students/(?P<sid>\d+)/delete/$', 'students_app.views.students.students_delete',
                            name='students_delete'),
 
 
                        # Groups urls:
-                       url(r'^groups/$', 'students_app.views.groups_list', name='groups'),
-                       url(r'^groups/add/$', 'students_app.views.groups_add', name='groups_add'),
-                       url(r'^groups/(?P<gid>\d+)/edit/$', 'students_app.views.groups_edit', name='groups_edit'),
-                       url(r'^groups/(?P<gid>\d+)/delete/$', 'students_app.views.groups_delete', name='groups_delete'),
+                       url(r'^groups/$', 'students_app.views.groups.groups_list', name='groups'),
+                       url(r'^groups/add/$', 'students_app.views.groups.groups_add', name='groups_add'),
+                       url(r'^groups/(?P<gid>\d+)/edit/$', 'students_app.views.groups.groups_edit', name='groups_edit'),
+                       url(r'^groups/(?P<gid>\d+)/delete/$', 'students_app.views.groups.groups_delete', name='groups_delete'),
 
                        url(r'^admin/', include(admin.site.urls)),
                        )
