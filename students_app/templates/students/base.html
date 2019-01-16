@@ -17,10 +17,14 @@
 <div class="container">
     <!-- Start Header -->
     <div class="row" id="header">
+        {% block logo %}
         <!-- Logo -->
         <div class="col-xs-8">
             <h1>Сервіс Обліку Студентів</h1>
         </div>
+        {% endblock logo %}
+
+        {% block groups_selector %}
         <!-- Groups Selector -->
         <div class="col-xs-4" id="group-selector">
             <strong>Група:</strong>
@@ -30,6 +34,7 @@
                 <option value="">МтМ - 22, Корост Андрій (No 2123)</option>
             </select>
         </div>
+        {% endblock groups_selector %}
     </div>
     <!-- End Header -->
 
@@ -39,8 +44,8 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" {% url 'home' as home_url %}{% if request.path == home_url %}class = "active"{% endif %}>
                     <a href="{% url 'home' %}">Студенти</a></li>
-                <li role="presentation" {% if '/journal' in request.path %}class = "active"{% endif %}>
-                    <a href="/journal">Відвідування</a></li>
+                <li role="presentation" {% url 'journal' as journal_url %}{% if request.path == journal_url %}class = "active"{% endif %}>
+                    <a href="{% url 'journal' %}">Відвідування</a></li>
                 <li role="presentation" {% url 'groups' as groups_url %}{% if groups_url in request.path %}class = "active"{% endif %}>
                     <a href="{% url 'groups' %}">Групи</a></li>
             </ul>
@@ -62,6 +67,7 @@
     </div>
     <!-- End Content Columns -->
 
+    {% block footer %}
     <!-- Start Footer -->
     <div class="row" id="footer">
         <div class="col-xs-12">
@@ -69,6 +75,7 @@
         </div>
     </div>
     <!-- End Footer -->
+    {% endblock footer %}
 
 </div>
 <!-- End Container -->

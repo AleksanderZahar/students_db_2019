@@ -1,0 +1,116 @@
+{% extends "students/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block meta_title %}Журнал відвідування{% endblock meta_title %}
+
+{% block title %}Облік відвідування{% endblock %}
+
+{% block content %}
+
+<!-- Start Journal Listing -->
+
+    <!--Month pagination-->
+    <div class="month-pagination">
+        <nav aria-label="Month navigation">
+            <a title="Попередній" href="#">&lt;</a>
+            <label>Жовтень 2019</label>
+            <a title="Наступний" href="#">&gt;</a>
+        </nav>
+    </div>
+
+    <!--Journal content-->
+    <table class="table table-hover table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Студент</th>
+                <th>Пн 1</th>
+                <th>Вт 2</th>
+                <th>Ср 3</th>
+                <th>Чт 4</th>
+                <th>Пт 5</th>
+                <th>Сб 6</th>
+                <th>Вс 7</th>
+                <th>Пн 8</th>
+                <th>Вт 9</th>
+                <th>Ср 10</th>
+                <th>Чт 11</th>
+                <th>Пт 12</th>
+                <th>Сб 13</th>
+                <th>Вс 14</th>
+                <th>Пн 15</th>
+                <th>Вт 16</th>
+                <th>Ср 17</th>
+                <th>Чт 18</th>
+                <th>Пт 19</th>
+                <th>Сб 20</th>
+                <th>Вс 21</th>
+                <th>Пн 22</th>
+                <th>Вт 23</th>
+                <th>Ср 24</th>
+                <th>Чт 25</th>
+                <th>Пт 26</th>
+                <th>Сб 27</th>
+                <th>Вс 28</th>
+                <th>Пн 29</th>
+                <th>Вт 30</th>
+                <th>Ср 31</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in visiting %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a title="Редагувати" href="{% url 'students_edit' student.stud_id %}">{{ student.stud_first_name }} {{ student.stud_last_name }}</a></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+                <td><label><input type="checkbox"></label></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <!-- End Journal Listing -->
+
+    <!--Navigation-->
+    <nav>
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </nav>
+
+{% endblock content%}
