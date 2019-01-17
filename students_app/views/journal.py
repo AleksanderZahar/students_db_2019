@@ -22,3 +22,11 @@ def journal_list(request):
          'stud_last_name': u'Захаров'},
     )
     return render(request, 'students/journal_page.html', {'visiting': visiting})
+
+
+def journal_student(request, jsid):
+    return HttpResponse('<h1>Student %s Journal page</h1>' % jsid)
+
+
+def journal_group(request, jgid):
+    return HttpResponse('<h1>Group %s Journal page</h1>' % jgid)

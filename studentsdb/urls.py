@@ -19,6 +19,11 @@ urlpatterns = patterns('',
 
                        # Journal urls:
                        url(r'^journal/$', 'students_app.views.journal.journal_list', name='journal'),
+                       url(r'^journal/groups/(?P<jgid>\d+)/$', 'students_app.views.journal.journal_group',
+                           name='group_journal'),
+                       url(r'^journal/students/(?P<jsid>\d+)/$', 'students_app.views.journal.journal_student',
+                           name='student_journal'),
+
 
                        url(r'^admin/', include(admin.site.urls)),
                        )
