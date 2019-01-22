@@ -39,13 +39,15 @@
         <tbody>
         {% for student in students %}
         <tr>
-            <td>{{ forloop.counter }}</td>
+            <td>{% if request.GET.order_by == 'id' and request.GET.reverse == '1' %}{{ forloop.revcounter }}
+            {% else %}{{ forloop.counter }} {% endif %}</td>
+{#            <td>{{ forloop.counter }}</td>#}
             <td>{% if student.photo %}
                 <img height="30" width="30" src="{{ student.photo.url }}" class="img-circle">
                 {% else %}
                 <img height="30" width="30" src="{% static "img/default_user_photo.png" %}" class="img-circle">
                 {% endif %}</td>
-            <td><a title="Редагувати" href="{% url 'students_edit' student.id %}">{{ student.last_name }}</a></td>
+            <td><a title="Редагувати" href="{% url 'students_edit' student.id %}">Id {{ student.id }} - {{ student.last_name }}</a></td>
             <td><a title="Редагувати" href="{% url 'students_edit' student.id %}">{{ student.first_name }}</a></td>
             <td>{{ student.ticket }}</td>
             <td>
