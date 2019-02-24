@@ -26,6 +26,8 @@ urlpatterns = patterns('',
                        url(r'^journal/students/(?P<jsid>\d+)/$', 'students_app.views.journal.journal_student',
                            name='student_journal'),
 
+                       # Exams list:
+                       url(r'^exams/$', 'students_app.views.exams.exams_list', name='exams'),
 
                        url(r'^admin/', include(admin.site.urls)),
                        )

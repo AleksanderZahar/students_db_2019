@@ -48,6 +48,8 @@
                     <a href="{% url 'journal' %}">Відвідування</a></li>
                 <li role="presentation" {% url 'groups' as groups_url %}{% if groups_url in request.path %}class = "active"{% endif %}>
                     <a href="{% url 'groups' %}">Групи</a></li>
+                <li role="presentation" {% url 'exams' as exams_url %}{% if request.path == exams_url %}class = "active"{% endif %}>
+                    <a href="{% url 'exams' %}">Іспити</a></li>
             </ul>
         </div>
     </div>
