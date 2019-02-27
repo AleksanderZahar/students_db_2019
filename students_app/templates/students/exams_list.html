@@ -8,7 +8,7 @@
 
 {% block content %}
 
-{#    <a class="btn btn-primary" href="{% url 'students_add' %}">Додати Студента</a>#}
+    <a class="btn btn-primary" href="{% url 'exam_add' %}">Додати Іспит</a>
 
     <!-- Start Exams Listing -->
     <table class="table table-hover table-striped">
@@ -29,29 +29,29 @@
 {#            <td>{% if request.GET.order_by == 'id' and request.GET.reverse == '1' %}{{ forloop.revcounter }}#}
 {#            {% else %}{{ forloop.counter }} {% endif %}</td>#}
             <td>{{ forloop.counter }}</td>
-            <td>{{ exam.exam_subject }}</td>
+            <td><a title="Редагувати" href="{% url 'exam_edit' exam.id %}">{{ exam.exam_subject }}</a></td>
             <td>{{ exam.exam_date }}</td>
             <td>{{ exam.exam_teacher }}</td>
             <td>{{ exam.exam_group }}</td>
-{#            <td>#}
-{#                <div class="dropdown">#}
-{#                    <button class="btn btn-default dropdown-toggle"#}
-{#                            type="button" data-toggle="dropdown">Дія#}
-{#                        <span class="caret"></span>#}
-{#                    </button>#}
-{#                    <ul class="dropdown-menu" role="menu">#}
-{#                        <li role="presentation">#}
-{#                            <a role="menuitem" tabindex="-1"#}
-{#                               href="{% url 'student_journal' student.id %}">Відвідування</a></li>#}
-{#                        <li role="presentation">#}
-{#                            <a role="menuitem" tabindex="-1"#}
-{#                               href="{% url 'students_edit' student.id %}">Редагувати</a></li>#}
-{#                        <li role="presentation">#}
-{#                            <a role="menuitem" tabindex="-1"#}
-{#                               href="{% url 'students_delete' student.id %}">Видалити</a></li>#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </td>#}
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle"
+                            type="button" data-toggle="dropdown">Дія
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1"
+                               href="{% url 'exam_edit' exam.id %}">Редагувати</a></li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1"
+                               href="{% url 'exam_delete' exam.id %}">Видалити</a></li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1"
+                               href="{% url 'exam_results' exam.id %}">Результати іспиту</a></li>
+                    </ul>
+                </div>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

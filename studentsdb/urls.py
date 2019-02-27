@@ -28,6 +28,14 @@ urlpatterns = patterns('',
 
                        # Exams list:
                        url(r'^exams/$', 'students_app.views.exams.exams_list', name='exams'),
+                       url(r'^exams/add/$', 'students_app.views.exams.exam_add', name='exam_add'),
+                       url(r'^exams/(?P<exid>\d+)/results/$', 'students_app.views.exams.exam_results',
+                           name='exam_results'),
+                       url(r'^exams/(?P<exid>\d+)/edit/$', 'students_app.views.exams.exam_edit',
+                           name='exam_edit'),
+                       url(r'^exams/(?P<exid>\d+)/delete/$', 'students_app.views.exams.exam_delete',
+                           name='exam_delete'),
+
 
                        url(r'^admin/', include(admin.site.urls)),
                        )
