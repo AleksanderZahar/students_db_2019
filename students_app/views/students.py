@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
 from ..models.students import Student
 from ..models.groups import Group
 
@@ -44,25 +45,64 @@ def students_list(request):
 def students_add(request):
     # if form was postetd?:
     if request.method == "POST":
-
         # was form add button clicked?:
         if request.POST.get('add_button') is not None:
-
-            # TODO: validate input from user
+            # errors collection:
             errors = {}
 
+            # data for student object
+            data = {'middle_name': request.POST.get('middle_name'),
+                    'notes': request.POST.get('notes')}
+
+            # validate user input:
+            first_name = request.POST.get('first_name', '').strip()
+            if not first_name:
+                errors['first_name'] = u"Ім'я є обов'язковим"
+            else:
+                data['first_name'] = first_name
+
+            last_name = request.POST.get('last_name', '').strip()
+            if not last_name:
+                errors['last_name'] = u"Прізвище є обов'язковим"
+            else:
+                data['last_name'] = last_name
+
+            birthday = request.POST.get('birthday', '').strip()
+            if not birthday:
+                errors['birthday'] = u"Дата народження є обов'язковою"
+            else:
+                try:
+                    datetime.strptime(birthday, '%Y-%m-%d')
+                except Exception:
+                    errors['birthday'] = u'Введіть дату у коректному форматі "РРРР-ММ-ДД"'
+                else:
+                    data['birthday'] = birthday
+
+            ticket = request.POST.get('ticket', '').strip()
+            if not ticket:
+                errors['ticket'] = u"Номер студ квитка є обов'язковим"
+            else:
+                data['ticket'] = ticket
+
+            student_group = request.POST.get('student_group', '').strip()
+            if not student_group:
+                errors['student_group'] = u"Оберіть групу для студента"
+            else:
+                groups = Group.objects.filter(pk=student_group)
+                if len(groups) != 1:
+                    errors['student_group'] = u"Оберіть коректну групу для студента"
+                else:
+                    data['student_group'] = groups[0]
+
+            # TODO: стр. 306 валидация поля фото. Точно ли формат изображения? Макс. размер 2 Мб
+            photo = request.FILES.get('photo')
+            if photo:
+                data['photo'] = photo
+
+            # save student
             if not errors:
                 # create student object
-                student = Student(
-                    first_name=request.POST['first_name'],
-                    last_name=request.POST['last_name'],
-                    middle_name=request.POST['middle_name'],
-                    birthday=request.POST['birthday'],
-                    ticket=request.POST['ticket'],
-                    student_group=Group.objects.get(pk=request.POST['student_group']),
-                    photo=request.FILES['photo'],
-                )
-                # save it to DB
+                student = Student(**data)
                 student.save()
 
                 # redirect user to students list page
