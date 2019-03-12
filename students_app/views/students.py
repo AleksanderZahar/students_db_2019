@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 from datetime import datetime
 from ..models.students import Student
 from ..models.groups import Group
@@ -105,10 +106,18 @@ def students_add(request):
                 student = Student(**data)
                 student.save()
 
+                # # redirect user to students list page
+                # return HttpResponseRedirect(
+                #     u'%s?status_message=Студента %s %s успішно додано!' %
+                #     (reverse('home'), student.last_name, student.first_name))
+
                 # redirect user to students list page
                 return HttpResponseRedirect(
-                    u'%s?status_message=Студента %s %s успішно додано!' %
-                    (reverse('home'), student.last_name, student.first_name))
+                    reverse('home'),
+                    messages.success(request,
+                                     u'Студента %s %s успішно додано!'
+                                     % (student.last_name, student.first_name)))
+
             else:
                 # render form with errors and previous user input
                 return render(request, 'students/students_add.html',
@@ -116,7 +125,9 @@ def students_add(request):
                                'errors': errors})
         elif request.POST.get('cancel_button') is not None:
             # redirect to home page on cancel button
-            return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
+            # return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
+            return HttpResponseRedirect(reverse('home'), messages.warning(request, u'Додавання студента скасовано!'))
+
     else:
         # initial form render
         return render(request, 'students/students_add.html',
