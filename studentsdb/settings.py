@@ -33,7 +33,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students_app'
+    'students_app',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,3 +108,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
