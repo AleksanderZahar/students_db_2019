@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from studentsdb.settings import ADMIN_EMAIL
+from studentsdb.settings import ADMIN_EMAIL, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
 # Contact Admin Form
 
@@ -19,7 +19,6 @@ class ContactForm(forms.Form):
         max_length=128)
     message = forms.CharField(
         label=u"Текст повідомлення",
-        max_length=2560,
         widget=forms.Textarea)
 
 
@@ -45,7 +44,6 @@ def contact_admin(request):
             # redirect to same contact page with success message
             return HttpResponseRedirect(
                 u'%s?status_message=%s' % (reverse('contact_admin'), message))
-
     # if there was not POST render blank form
     else:
         form = ContactForm()
