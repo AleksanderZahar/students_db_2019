@@ -5,11 +5,37 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
+from django.views.generic import ListView
 from datetime import datetime
 from ..models.students import Student
 from ..models.groups import Group
 
 # Views for Students:
+
+
+class StudentList(ListView):
+    model = Student
+    context_object_name = 'students_list'
+    template_name = 'students/student_class_based_view_template.html'
+
+    def get_context_data(self, **kwargs):
+        """This method adds extra variables to template"""
+        # get original context data from parent class:
+        context = super(StudentList, self).get_context_data(**kwargs)
+
+        # tell template not to show logo on this page:
+        context['show_logo'] = False
+
+        # return context mapping:
+        return context
+
+    def get_queryset(self):
+        """Order students by last name"""
+        # get original query set:
+        qs = super(StudentList, self).get_queryset()
+
+        # order by last name:
+        return qs.order_by('last_name')
 
 
 def students_list(request):
@@ -140,29 +166,3 @@ def students_edit(request, sid):
 
 def students_delete(request, sid):
     return HttpResponse('<h1>Student %s Delete</h1>' % sid)
-
-
-# def students_list(request):
-#     students = (
-#         {'id': 1,
-#          'first_name': u'Віталій',
-#          'last_name': u'Подоба',
-#          'ticket': 2121,
-#          'image': 'img/me.jpeg'},
-#         {'id': 2,
-#          'first_name': u'Андрій',
-#          'last_name': u'Корост',
-#          'ticket': 2122,
-#          'image': 'img/piv.png'},
-#         {'id': 3,
-#          'first_name': u'Тарас',
-#          'last_name': u'Бульба',
-#          'ticket': 2123,
-#          'image': 'img/podoba3.jpg'},
-#         {'id': 4,
-#          'first_name': u'Олександр',
-#          'last_name': u'Захаров',
-#          'ticket': 2124,
-#          'image': 'img/podoba3.jpg'},
-#     )
-#     return render(request, 'students/students_list.html', {'students': students})

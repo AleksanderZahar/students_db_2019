@@ -1,0 +1,16 @@
+{% extends "students/base.html" %}
+
+{#{% load static from staticfiles %}#}
+{##}
+{#{% block meta_title %}Студенти{% endblock meta_title %}#}
+{##}
+{#{% block title %}База студентів{% endblock %}#}
+
+{% block content %}
+    <h2>Students</h2>
+    <ul>
+        {% for student in students_list %}
+            <li>{{ student.last_name }} {{ student.first_name }} {{ student.student_group }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content%}
