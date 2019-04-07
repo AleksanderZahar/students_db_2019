@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from .settings import MEDIA_ROOT, DEBUG
 from students_app.views.students import StudentList
+from students_app.views.contact_admin import ContactView
 
 urlpatterns = patterns('',
                        # Students urls:
@@ -41,6 +42,7 @@ urlpatterns = patterns('',
 
                        # Contact Admin Form
                        url(r'contact-admin/$', 'students_app.views.contact_admin.contact_admin', name='contact_admin'),
+                       url(r'^contact-form/$', ContactView.as_view(), name='contact-form'),
 
 
                        url(r'^admin/', include(admin.site.urls)),

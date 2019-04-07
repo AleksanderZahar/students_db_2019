@@ -6,9 +6,13 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from studentsdb.settings import ADMIN_EMAIL, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
+from studentsdb.settings import ADMIN_EMAIL
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from django.views.generic.edit import FormView
+
+from django.core.urlresolvers import reverse_lazy
+
 
 # Contact Admin Form
 
@@ -78,3 +82,22 @@ def contact_admin(request):
         form = ContactForm()
 
     return render(request, 'contact_admin/form.html', {'form': form})
+
+
+# Contact Admin form as ClassBasedView:
+# TODO: реализовать польностью форму контакта через класс. Обработка ошибок, сообщения
+class ContactView(FormView):
+    template_name = 'contact_admin/contact-form.html'
+    form_class = ContactForm
+    # success_url = '/email-sent/'
+    success_url = reverse_lazy('contact-form')
+
+    def form_valid(self, form):
+        """This method is called for valid data"""
+        subject = 'Send from my Django StudentsApp ' + form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        from_email = form.cleaned_data['from_email']
+        messages.success(self.request, u"Повідомлення успішно відправлено!")
+
+        send_mail(subject, message, from_email, [ADMIN_EMAIL])
+        return super(ContactView, self).form_valid(form)
