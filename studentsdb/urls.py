@@ -41,7 +41,7 @@ urlpatterns = patterns('',
                            name='exam_delete'),
 
                        # Contact Admin Form
-                       url(r'contact-admin/$', 'students_app.views.contact_admin.contact_admin', name='contact_admin'),
+                       url(r'^contact-admin/$', 'students_app.views.contact_admin.contact_admin', name='contact_admin'),
                        url(r'^contact-form/$', ContactView.as_view(), name='contact-form'),
 
 

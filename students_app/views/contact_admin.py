@@ -30,7 +30,7 @@ class ContactForm(forms.Form):
         # form tag attributes
         self.helper.form_class = 'form-horizontal'
         self.helper.form_method = 'post'
-        self.helper.form_action = reverse('contact_admin')
+        # self.helper.form_action = reverse('contact_admin')
 
         # twitter bootstrap styles
         self.helper.help_text_inline = True
@@ -97,7 +97,7 @@ class ContactView(FormView):
         subject = 'Send from my Django StudentsApp ' + form.cleaned_data['subject']
         message = form.cleaned_data['message']
         from_email = form.cleaned_data['from_email']
-        messages.success(self.request, u"Повідомлення успішно відправлено!")
+        messages.success(self.request, u"Повідомлення успішно відправлено!!!!!!")
 
         send_mail(subject, message, from_email, [ADMIN_EMAIL])
         return super(ContactView, self).form_valid(form)

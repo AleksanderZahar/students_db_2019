@@ -18,15 +18,6 @@
 
 {% block content %}
 
-{#    <form action="{% url 'contact-form' %}" method="post">#}
-{#        {% csrf_token %}#}
-{##}
-{#        {{ form.as_p }}#}
-{##}
-{#        <input type="submit" value="Надіслати" name="send_button"/>#}
-{##}
-{#    </form>#}
-
     {% crispy form %}
 
 {% endblock content%}
