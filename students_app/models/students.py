@@ -38,7 +38,7 @@ class Student(models.Model):
     ticket = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=u"Білет")
+        verbose_name=u"Студентський квиток")
 
     notes = models.TextField(
         blank=True,
