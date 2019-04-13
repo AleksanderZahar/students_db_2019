@@ -1,17 +1,15 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from .settings import MEDIA_ROOT, DEBUG
-from students_app.views.students import StudentList
+from students_app.views.students import StudentList, StudentsUpdateView, StudentsDeleteView
 from students_app.views.contact_admin import ContactView
 
 urlpatterns = patterns('',
                        # Students urls:
                        url(r'^$', 'students_app.views.students.students_list', name='home'),
                        url(r'^students/add/$', 'students_app.views.students.students_add', name='students_add'),
-                       url(r'^students/(?P<sid>\d+)/edit/$', 'students_app.views.students.students_edit',
-                           name='students_edit'),
-                       url(r'^students/(?P<sid>\d+)/delete/$', 'students_app.views.students.students_delete',
-                           name='students_delete'),
+                       url(r'^students/(?P<pk>\d+)/edit/$', StudentsUpdateView.as_view(), name='students_edit'),
+                       url(r'^students/(?P<pk>\d+)/delete/$', StudentsDeleteView.as_view(), name='students_delete'),
                        # Students List View as class:
                        url(r'^student_list/$', StudentList.as_view()),
 
